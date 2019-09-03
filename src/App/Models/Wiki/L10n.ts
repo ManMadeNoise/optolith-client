@@ -2,6 +2,7 @@ import { List } from "../../../Data/List";
 import { fromDefault, Record } from "../../../Data/Record";
 
 export interface L10n {
+  "@@name": "L10n"
   "id": string
   "lastchanges": string
   "heroes": string
@@ -626,6 +627,11 @@ export interface L10n {
   "saveheroerror": string
   "brews": List<string>
   "brew": string
+  "all": string
+  "allmeleecombattechniques": string
+  "allrangedcombattechniques": string
+  "allmeleecombattechniqueswithparry": string
+  "allmeleecombattechniquesforonehandedweapons": string
 }
 
 export type L10nKey = keyof L10n
@@ -1259,4 +1265,9 @@ export const L10n =
                 "saveheroerror": "",
                 "brews": List.empty,
                 "brew": "",
+                "all": "",
+                "allmeleecombattechniques": "",
+                "allrangedcombattechniques": "",
+                "allmeleecombattechniqueswithparry": "",
+                "allmeleecombattechniquesforonehandedweapons": "",
               })

@@ -2,6 +2,7 @@ import { Either, fromRight_, isLeft, mapM, maybeToEither, maybeToEither_ } from 
 import { List } from "../../../../Data/List";
 import { ensure, liftM2 } from "../../../../Data/Maybe";
 import { fromList, lookupF, OrderedMap } from "../../../../Data/OrderedMap";
+import { OmitName } from "../../../../Data/Record";
 import { show } from "../../../../Data/Show";
 import { Pair } from "../../../../Data/Tuple";
 import { L10n, L10nRecord } from "../../../Models/Wiki/L10n";
@@ -46,7 +47,7 @@ export const toL10n =
 
       type MapWithEither<A> = { [K in keyof A]: Either<string, A[K]>}
 
-      const mappedL10n: MapWithEither<L10n> = {
+      const mappedL10n: MapWithEither<OmitName<L10n>> = {
         "id": maybeToEither_ (() => `Expected: Locale, Received: ${show (id)}`)
                              (ensure (isLocale) (id)),
         "lastchanges": checkL10nNonEmptyString ("lastchanges"),
@@ -702,6 +703,13 @@ export const toL10n =
         "saveheroerror": checkL10nNonEmptyString ("saveheroerror"),
         "brews": checkL10nNonEmptyStringList ("brews"),
         "brew": checkL10nNonEmptyString ("brew"),
+        "all": checkL10nNonEmptyString ("all"),
+        "allmeleecombattechniques": checkL10nNonEmptyString ("allmeleecombattechniques"),
+        "allrangedcombattechniques": checkL10nNonEmptyString ("allrangedcombattechniques"),
+        "allmeleecombattechniqueswithparry":
+          checkL10nNonEmptyString ("allmeleecombattechniqueswithparry"),
+        "allmeleecombattechniquesforonehandedweapons":
+          checkL10nNonEmptyString ("allmeleecombattechniquesforonehandedweapons"),
       }
 
       return mapMNamed
@@ -1336,6 +1344,12 @@ export const toL10n =
           "saveheroerror": res ["saveheroerror"],
           "brews": res ["brews"],
           "brew": res ["brew"],
+          "all": res ["all"],
+          "allmeleecombattechniques": res ["allmeleecombattechniques"],
+          "allrangedcombattechniques": res ["allrangedcombattechniques"],
+          "allmeleecombattechniqueswithparry": res ["allmeleecombattechniqueswithparry"],
+          "allmeleecombattechniquesforonehandedweapons":
+            res ["allmeleecombattechniquesforonehandedweapons"],
           // tslint:enable: no-string-literal
         }))
     }
